@@ -9,6 +9,8 @@ from llmware.prompts import Prompt
 from llmware.setup import Setup
 from llmware.util import PromptCatalog
 
+OPENAI_MODEL_NAME = "gpt-3.5-turbo" # "gpt-4"
+
 # Update this value with your own API Key, either by setting the env var or editing it directly here:
 openai_api_key = os.environ.get("OPENAI_API_KEY","")
 
@@ -62,14 +64,14 @@ print_all_prompt_instructions()
 
 simple_prompt_with_context_string( prompt = "What is my 3rd favorite type of food?",
                                    context = "My favorite foods are Sushi, Italian and Greek",
-                                   llm_name = "gpt-4",
+                                   llm_name = OPENAI_MODEL_NAME,
                                    api_key = openai_api_key
                                  )
 
 prompt_with_prompt_instruction( prompt = "How old is my oldest sibling?",
                                 context = "My brother is 20 years old and my sister is 1.5 times older",
                                 prompt_instruction = "number_or_none",
-                                llm_name = "gpt-4",
+                                llm_name = OPENAI_MODEL_NAME,
                                 api_key = openai_api_key
                               )
 
@@ -77,18 +79,18 @@ prompt_with_inference_config( prompt = "Why is it difficult?",
                               context = "I am interested in building rockets",
                               prompt_instruction = "explain_child",
                               inference_config = {"temperature": 0.8, "llm_max_output_len": 1000, "max_tokens": 1000},
-                              llm_name = "gpt-4",
+                              llm_name = OPENAI_MODEL_NAME,
                               api_key = openai_api_key)
 
 prompt_with_wiki_source( prompt = "Was Barack Obama the Prime Minister of Canada?",
                          wiki_topic = "Barack Obama",
                          prompt_instruction = "yes_no",
-                         llm_name = "gpt-4",
+                         llm_name = OPENAI_MODEL_NAME,
                          api_key = openai_api_key)
 
 prompt_with_local_file_sources( prompt = "What was the effective date of this agreement?",
                                 local_folder = os.path.join(Setup().load_sample_files(), "SmallLibrary"),
                                 local_files = ['Gaia EXECUTIVE EMPLOYMENT AGREEMENT.pdf'],
                                 prompt_instruction = "just_the_facts",
-                                llm_name = "gpt-4",
+                                llm_name = OPENAI_MODEL_NAME,
                                 api_key = openai_api_key)

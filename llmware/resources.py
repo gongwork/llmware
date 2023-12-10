@@ -1304,8 +1304,8 @@ class StateResourceUtil:
 
     @staticmethod
     def get_current_time_now (time_str="%a %b %e %H:%M:%S %Y"):
-        time_stamp = datetime.now().strftime(time_str)
-        return time_stamp
+        if os.name == "nt": time_str="%Y-%m-%d_%H%M%S"
+        return datetime.now().strftime(time_str)
 
     @staticmethod
     def file_save (cfile, file_path, file_name):

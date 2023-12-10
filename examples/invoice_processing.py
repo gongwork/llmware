@@ -66,6 +66,8 @@ def invoice_processing(run_on_cpu=True):
 
     for i, invoice in enumerate(os.listdir(invoices_path)):
 
+        # if i > 2: continue  # test
+
         #   just in case (legacy on mac os file system - not needed on linux or windows)
         if invoice != ".DS_Store":
 
